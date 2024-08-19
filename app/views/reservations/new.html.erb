@@ -1,0 +1,36 @@
+<h1>New Reservation</h1>
+<%= form_with model: @reservation, url: confirm_reservations_url(@reservation), local: true do |f| %>
+    <% if @reservation.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+  
+        <ul>
+          <% @reservation.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    
+  
+    <div class="field">
+      <%= f.label :start_date %>
+      <%= f.date_select :start_date %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :end_date %>
+      <%= f.date_select :end_date %>
+    </div>
+  
+    <div class="field">
+      <%= f.label :people %>
+      <%= f.number_field :people %>
+    </div>
+  
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+  <%= link_to 'Back', reservations_path %>

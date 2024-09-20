@@ -6,12 +6,17 @@
   <thead>
     <tr>
       <th>Room_id</th>
+      <th>User_id</th>
+      <th>Room_image</th>
+      <th>Room_name</th>
+      <th>Introduce</th>
+      <th>Total_price</th>
       <th>Start date</th>
       <th>End date</th>
-      <th>People</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>User_id</th>
+      <th>Created_at</th>
+      <th>Id</th>
+
+      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,23 +25,31 @@
     <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.room_id %></td>
+        <td><%= reservation.user_id %></td>
+        
+        <% if reservation.room.room_image? %>
+  <td><%= image_tag reservation.room.room_image.url %></td>
+<% else %>
+  <td><%= image_tag ("room.png"),:size =>'75x50' %></td>
+<% end %>
+        <td><%= reservation.room.room_name%></td>
+        <td><%= reservation.room.introduce%></td>
+        <td><%= reservation.total_price.to_i%></td>
         <td><%= reservation.start_date %></td>
         <td><%= reservation.end_date %></td>
-        <td><%= reservation.people %></td>
-        <td><%= reservation.room.price %></td>
-        <td><%= reservation.room.address %></td>
-        <td><%= reservation.room.user_id %></td>
+        <td><%= reservation.created_at %></td>
+        <td><%= reservation.id %></td>
+       
+        
 
-
-
-        <td><%= link_to 'Show', reservation %></td>
-        <td><%= link_to 'Edit', edit_reservation_path(reservation) %></td>
-        <td><%= button_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+       
     <% end %>
-  </tbody>
-</table>
+    </tbody>
 
-<br>
+    </tbody>
+    </table>
+    
+<%= link_to 'Back', users_path %>
 
-<%= link_to 'New Reservation', new_reservation_path %>
+
+

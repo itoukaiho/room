@@ -1,22 +1,30 @@
 <h1>宿泊予約アプリ</h1>
 
 <% if user_signed_in? %>
-
-<%= button_to 'ログアウト', destroy_user_session_path , method: :delete %>
-
-<%= link_to @user.name %>
-<%= link_to '新規部屋作成', new_room_path %>
-<%= link_to '部屋作成一覧', rooms_path %>
-<%= link_to '予約一覧', reservations_path %>
-<%= link_to('アカウント', user_path(@user)) %>
-<%= link_to('プロフィール', profile_path(@user)) %>
 <% if @user.img? %>
   <h1><%= image_tag @user.img.url %></h1>
 <% else %>
   <h1><%= image_tag ("defalt.png") %></h1>
 <% end %>
+<nav class="nav-menu">
+ 
 
 
+    <ul class="menu-item drop-menu"><%= link_to @user.name %>
+      <ul class="drop-menu-list">
+        <li class="drop-menu-item"><%= link_to '新規部屋作成', new_room_path %></li>
+        <li class="drop-menu-item"><%= link_to '部屋作成一覧', rooms_path %></li>
+        <li class="drop-menu-item"><%= link_to '予約一覧',reservations_path(@reservations) %></li>
+        <li class="drop-menu-item"><%= link_to('アカウント', user_path(@user)) %></li>
+        <li class="drop-menu-item"><%= link_to('プロフィール', profile_path(@user)) %></li>
+      </ul>
+    
+ </ul>
+</nav>
+  
+
+
+<%= button_to 'ログアウト', destroy_user_session_path , method: :delete %>
 
  
 

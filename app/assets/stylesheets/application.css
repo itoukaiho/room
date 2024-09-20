@@ -13,3 +13,84 @@
  *= require_tree .
  *= require_self
  */
+ .mypage-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    padding: 26px;
+    border: 1px solid #ccc;
+    z-index: 999;
+  }
+  
+  .mypage-btn-container {
+    position: relative;
+  }
+  
+  .mypage-btn-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .mypage-dropdown a {
+    color: #5c3e26;
+    text-decoration: none;
+  }
+  
+  .mypage-dropdown a:hover {
+    color: #8b5c38;
+  }
+  
+  .category-container:hover {
+    cursor: pointer;
+  }
+
+
+  .nav-menu {
+    background-color: #333; /* メニューの背景色 */
+    color: #333; /* メニューテキストの色 */
+   
+  }
+  .menu-list {
+    display: flex;
+    justify-content: center; /* メニューアイテムを中央揃えに */
+  }
+  .menu-item {
+    border-left: 1px solid #fff; /* メニューアイテムの左ボーダー */
+    position: relative;
+  }
+  .menu-item:last-child {
+    border-right: 1px solid #fff; /* 最後のメニューアイテムの右ボーダー */
+  }
+  
+  /* メニューアイテムのホバースタイル */
+  .menu-item:hover .drop-menu-list {
+    visibility: visible; /* 下層メニューを表示 */
+  }
+  
+  .menu-item a {
+    align-items: center;
+    color: #fff; /* メニューアイテム内のリンクテキストの色 */
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    text-decoration: none; /* リンクの下線を非表示 */
+    width: 100px;
+    
+  }
+  /* ドロップダウンメニュー */
+  .drop-menu {
+    position: relative;
+  }
+  
+  .drop-menu-list {
+    background-color: #696969; /* ドロップダウンメニューの背景色 */
+    left: 0;
+    position: absolute;
+    top: 100%;
+    visibility: hidden; /* 下層メニューを非表示 */
+    width: max-content;
+    z-index: 1;
+  }

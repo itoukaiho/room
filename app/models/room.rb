@@ -3,7 +3,7 @@ class Room < ApplicationRecord
   mount_uploader :room_image, RoomImageUploader
 
   belongs_to :user
-  has_many:reservations
+  has_many :reservations
 
     validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
 

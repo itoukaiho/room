@@ -1,30 +1,24 @@
 <h1>確認画面</h1>
 
-<p><%= @reservation.room.id%></p>
+<p><%= @reservation.room_id%></p>
 <p><%= @reservation.start_date%></p>
 <p><%= @reservation.end_date%></p>
 <p><%= @reservation.people%></p>
 <p><%= @reservation.total_date.to_i%></p>
-<p><%= @reservation.room.price%></p>
-<p><%= @reservation.room.address%></p>
+<p><%= @reservation.total_price.to_i%></p>
+<p><%= @reservation.room.room_name%></p>
 <p><%= @reservation.room.user_id%></p>
 
 
-<%= form_with model: @reservation, local: true do |f| %>
+<%= form_with model: @reservation,url: "/rooms/:room_id/reservation", method: :post, local: true do |f| %>
   <%= f.hidden_field :room_id %>
-
-  
-  
   <%= f.hidden_field :start_date %>
   <%= f.hidden_field :end_date %>
   <%= f.hidden_field :people %>
   <%= f.hidden_field :total_date %>
-  <%= f.hidden_field :price %>
-  <%= f.hidden_field :address%>
+  <%= f.hidden_field :total_price %>
+  <%= f.hidden_field :room_name %>
   <%= f.hidden_field :user_id %>
-
-
-
 
   <%= f.submit "投稿する" %>
   <%= f.submit "修正する", name: "back" %>

@@ -1,30 +1,32 @@
 class ReservationsController < ApplicationController
   before_action :set_reservation, only: %i[ show edit update destroy ]
+ 
 
   # GET /reservations or /reservations.json
   def index
     
-    @room = Room.find_by(params[:id])
-    @reservations = @room.reservations.all
+    @reservations =current_user.reservations
+    
+        
   end
-
   # GET /reservations/1 or /reservations/1.json
   def show
   end
 
   # GET /reservations/new
   def new
-    
-    @reservation = Reservation.new
+    @room = Room.find(params[:room_id])
+   @reservation = @room.reservations.new
+
   end
 
   def confirm
-  
-   @room = Room.find_by(params[:id])
-    @reservation = @room.reservations.new(reservation_params)
-
+    @room = Room.find(params[:room_id])
+     @reservation = @room.reservations.new(reservation_params)
+    
 
     render :new if @reservation.invalid?
+    
 end
 
   # GET /reservations/1/edit
@@ -34,12 +36,16 @@ end
   # POST /reservations or /reservations.json
   def create
     
-    @reservation = Reservation.new(reservation_params)
+    
+    @reservation =Reservation.new(reservation_params)
+
+  
+    
   
     if params[:back] || !@reservation.save
         render :new
     else
-        redirect_to reservations_url, notice: "Reservation was successfully created."
+        redirect_to action: :index, notice: "Reservation was successfully created."
     end
 end
 
@@ -72,9 +78,11 @@ end
       @reservation = Reservation.find(params[:id])
     end
 
+
+   
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:room_id, :start_date, :end_date, :people,:user_id)
+      params.require(:reservation).permit(:id,:room_id,:start_date, :end_date, :people,:user_id).merge(user_id:current_user.id)
     end
 
   

@@ -1,7 +1,7 @@
 class Reservation < ApplicationRecord
 
- 
-  belongs_to :room
+ belongs_to:room
+ belongs_to:user
 
 
     validates :people, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
@@ -32,7 +32,7 @@ end_date-start_date
 end
 
 def total_price
- total_date*price
+ total_date*room.price*people
   end
 
 end

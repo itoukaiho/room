@@ -1,13 +1,7 @@
 Rails.application.routes.draw do
   
   
-  resources :reservations do
-  collection do
-    post 'confirm'
-  end
-end
-
-
+  
   devise_for :users
   root to: "users#index"
   resources :users
@@ -18,8 +12,18 @@ end
       get 'area'
     end
   end
+
+resources :rooms do
+   resource :reservation do
+   collection do
+  post 'confirm'
+        end
+      end   
+    end
+
   
-    
+resources :reservations, only: [:index]
+end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end

@@ -7,7 +7,7 @@ class Room < ApplicationRecord
 
     validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
 
-    validates :address, inclusion:{ in: %w(東京 大阪 札幌 京都) , message: ("は東京、大阪、札幌、京都いずれかを入力して下さい")}
+    
 
 
     def self.search(search)

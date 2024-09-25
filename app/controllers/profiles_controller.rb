@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
        @profile= User.find(params[:id])
        
        if @profile.update(users_params)
-         redirect_to "http://localhost:3000/profiles/1"
+         redirect_to :back
        else
          render :edit
        end

@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+
+
  .mypage-dropdown {
     display: none;
     position: absolute;
@@ -78,11 +81,13 @@
     justify-content: center;
     text-decoration: none; /* リンクの下線を非表示 */
     width: 100px;
-    
+   
   }
   /* ドロップダウンメニュー */
   .drop-menu {
     position: relative;
+    float: right
+    
   }
   
   .drop-menu-list {
@@ -94,3 +99,20 @@
     width: max-content;
     z-index: 1;
   }
+  th,td {
+    border: solid 1px;          /* 枠線指定 */
+}
+
+table {
+    border-collapse:  collapse; /* セルの線を重ねる */
+    width:  100%;               /* 幅指定 */
+}
+
+th {
+    width:  100px;              /* 幅指定 */
+    text-align: left;           /* 文字の揃え位置指定 */
+}
+
+td {
+    text-align:  center;        /* 文字の揃え位置指定 */
+}

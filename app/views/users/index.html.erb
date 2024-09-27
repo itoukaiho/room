@@ -1,19 +1,22 @@
 <h1>宿泊予約アプリ</h1>
-<head>
+
+<% if user_signed_in? %>
 <nav class="nav-menu">
-<a>
+
+
+
 <% if @user.img? %>
   <%= image_tag @user.img.url %>
 <% else %>
   <%= image_tag ("defalt.png") %>
 <% end %>
-</a>
+
 
 
     <ul class="menu-item drop-menu">
     
 
-    <% if user_signed_in? %>
+    
 
     <%= link_to @user.name %>
       <ul class="drop-menu-list">
@@ -26,7 +29,7 @@
     
  </ul>
 </nav>
- </head> 
+ 
 
 
 <%= button_to 'ログアウト', destroy_user_session_path , method: :delete %>

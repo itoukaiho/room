@@ -1,16 +1,21 @@
 <h1>宿泊予約アプリ</h1>
-
-<% if user_signed_in? %>
-<% if @user.img? %>
-  <h1><%= image_tag @user.img.url %></h1>
-<% else %>
-  <h1><%= image_tag ("defalt.png") %></h1>
-<% end %>
+<head>
 <nav class="nav-menu">
- 
+<a>
+<% if @user.img? %>
+  <%= image_tag @user.img.url %>
+<% else %>
+  <%= image_tag ("defalt.png") %>
+<% end %>
+</a>
 
 
-    <ul class="menu-item drop-menu"><%= link_to @user.name %>
+    <ul class="menu-item drop-menu">
+    
+
+    <% if user_signed_in? %>
+
+    <%= link_to @user.name %>
       <ul class="drop-menu-list">
         <li class="drop-menu-item"><%= link_to '新規部屋作成', new_room_path %></li>
         <li class="drop-menu-item"><%= link_to '部屋作成一覧', rooms_path %></li>
@@ -21,7 +26,7 @@
     
  </ul>
 </nav>
-  
+ </head> 
 
 
 <%= button_to 'ログアウト', destroy_user_session_path , method: :delete %>

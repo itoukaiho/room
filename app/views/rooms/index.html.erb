@@ -2,11 +2,13 @@
 
 <h1>Rooms</h1>
 
+
+
+
 <table>
   <thead>
     <tr>
-      <th>User_id</th>
-      <th>Room_id</th>
+      
       <th>Room image</th>
       <th>Room name</th>
       <th>Introduce</th>
@@ -19,8 +21,7 @@
   <tbody>
     <% @rooms.each do |room| %>
       <tr>
-        <td><%= room.user_id %></td>
-        <td><%= room.id %></td>
+        
         <% if room.room_image? %>
   <td><%= image_tag room.room_image.url %></td>
 <% else %>

@@ -1,37 +1,6 @@
-<h1>宿泊予約アプリ</h1>
+
 
 <% if user_signed_in? %>
-<nav class="nav-menu">
-
-
-
-<% if @user.img? %>
-  <%= image_tag @user.img.url %>
-<% else %>
-  <%= image_tag ("defalt.png") %>
-<% end %>
-
-
-
-    <ul class="menu-item drop-menu">
-    
-
-    
-
-    <%= link_to @user.name %>
-      <ul class="drop-menu-list">
-        <li class="drop-menu-item"><%= link_to '新規部屋作成', new_room_path %></li>
-        <li class="drop-menu-item"><%= link_to '部屋作成一覧', rooms_path %></li>
-        <li class="drop-menu-item"><%= link_to '予約一覧',reservations_path(@reservations) %></li>
-        <li class="drop-menu-item"><%= link_to('アカウント', user_path(@user)) %></li>
-        <li class="drop-menu-item"><%= link_to('プロフィール', profile_path(@user)) %></li>
-      </ul>
-    
- </ul>
-</nav>
- 
-
-
 <%= button_to 'ログアウト', destroy_user_session_path , method: :delete %>
 
  
@@ -39,15 +8,15 @@
 
 <p>フリーワード検索</p>
 <%= form_tag(search_rooms_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :name => nil %>
 
 
-  <%end%>
-  <p>エリア検索</p>
+<%end%>
+<p>エリア検索</p>
 <%= form_tag(area_rooms_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :name => nil %>
 <% end %>
     
 

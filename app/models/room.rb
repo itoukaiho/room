@@ -6,7 +6,9 @@ class Room < ApplicationRecord
   has_many :reservations
 
     validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 1}
-
+    validates :room_name, presence: true
+    validates :introduce, presence: true
+    validates :address, presence: true
     
 
 

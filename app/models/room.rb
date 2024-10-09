@@ -23,4 +23,12 @@ class Room < ApplicationRecord
  
     end
 
+    def self.tokyo(tokyo)
+      return Room.all unless tokyo
+  Room.where(['address LIKE ?', "%#{tokyo}%"])
+ 
+    end 
+
+
+  
 end

@@ -73,6 +73,33 @@ class RoomsController < ApplicationController
 @room_total = @rooms.count
 end
 
+def tokyo
+  
+  @rooms = Room.where(address:"東京")
+  @room_total = @rooms.count
+end
+
+def oosaka
+  
+  @rooms = Room.where(address:"大阪")
+  @room_total = @rooms.count
+end
+
+
+def sapporo
+  
+  @rooms = Room.where(address:"札幌")
+  @room_total = @rooms.count
+end
+
+
+def kyouto
+  
+  @rooms = Room.where(address:"京都")
+  @room_total = @rooms.count
+end
+
+
 
 
   private

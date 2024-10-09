@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'area'
+      get 'tokyo'
+      get 'oosaka'
+      get 'sapporo'
+      get 'kyouto'
     end
   end
 

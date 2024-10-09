@@ -3,13 +3,13 @@
 
 
 
-<% if @user.img? %>
-  <h1>アイコン<%= image_tag @user.img.url %></h1>
+<% if @profile.img? %>
+  <h1>アイコン<%= image_tag @profile.img.url %></h1>
 <% else %>
   <h1>アイコン<%= image_tag ("defalt.png") %></h1>
 <% end %>
 
-<h1>名前 <%= @user.name %></h1>
+<h1>名前 <%= @profile.name %></h1>
 <h1>自己紹介</h1>
 <%= link_to 'Edit', edit_profile_url %> |
 <%= link_to 'Back', users_path %>

@@ -45,7 +45,7 @@ end
     if params[:back] || !@reservation.save
         render :new
     else
-        redirect_to action: :index, notice: "Reservation was successfully created."
+        redirect_to action: :index, notice: "予約しました。"
     end
 end
 
@@ -53,7 +53,7 @@ end
   def update
     respond_to do |format|
       if @reservation.update(reservation_params)
-        format.html { redirect_to reservation_url(@reservation), notice: "Reservation was successfully updated." }
+        format.html { redirect_to reservation_url(@reservation), notice: "予約を編集しました。" }
         format.json { render :show, status: :ok, location: @reservation }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -67,7 +67,7 @@ end
     @reservation.destroy
 
     respond_to do |format|
-      format.html { redirect_to reservations_url, notice: "Reservation was successfully destroyed." }
+      format.html { redirect_to reservations_url, notice: "予約を削除しました。" }
       format.json { head :no_content }
     end
   end

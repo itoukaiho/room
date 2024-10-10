@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Reservations</h1>
+
+<table>
+  <thead>
+    <tr>
+      
+      <th>Room_image</th>
+      <th>Room_name</th>
+      <th>Introduce</th>
+      <th>Total_price</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Created_at</th>
+      
+
+      
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+       
+        
+        <% if reservation.room.room_image? %>
+  <td><%= image_tag reservation.room.room_image.url %></td>
+<% else %>
+  <td><%= image_tag ("room.png"),:size =>'75x50' %></td>
+<% end %>
+        <td><%= reservation.room.room_name%></td>
+        <td><%= reservation.room.introduce%></td>
+        <td><%= reservation.total_price.to_i%></td>
+        <td><%= reservation.start_date %></td>
+        <td><%= reservation.end_date %></td>
+        <td><%= reservation.created_at %></td>
+        
+        
+
+       
+    <% end %>
+    </tbody>
+
+    </tbody>
+    </table>
+    
+<%= link_to 'Back', users_path %>
+
+
+

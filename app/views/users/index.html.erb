@@ -1,0 +1,44 @@
+
+
+<% if user_signed_in? %>
+<%= button_to 'ログアウト', destroy_user_session_path , method: :delete %>
+
+ 
+
+
+<p>フリーワード検索</p>
+<%= form_tag(search_rooms_path,:method => 'get') do %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :name => nil %>
+
+<%end%>
+
+<p>エリア検索</p>
+<%= form_tag(area_rooms_path,:method => 'get') do %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :name => nil %>
+<% end %>
+
+<div>
+<p class="sample">東京<%= link_to image_tag('toukyou.webp',:size =>'250x250') ,tokyo_rooms_path(@room) %>
+</p>
+<p class="sample">大阪
+<%= link_to image_tag('oosaka.webp',:size =>'250x250'),oosaka_rooms_path(@room) %>
+</p>
+<p class="sample">札幌
+<%= link_to image_tag('sapporo.webp',:size =>'250x250'),sapporo_rooms_path(@room) %>
+</p>
+<p class="sample">京都
+<%= link_to image_tag('kyouto.jpg',:size =>'250x250'),kyouto_rooms_path(@room) %>
+</p>
+</div>   
+
+<% else %>
+<%= link_to '新規登録', new_user_registration_path %>
+<%= link_to 'ログイン', new_user_session_path %>
+
+
+
+
+
+<%end%>

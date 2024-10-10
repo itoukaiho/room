@@ -8,9 +8,44 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+
   </head>
 
   <body>
-    <%= yield %>
-  </body>
+  
+ 
+ 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+<h1>宿泊予約アプリ</h1>
+
+<% if user_signed_in? %>
+<nav class="nav-menu">
+
+<% if current_user.img? %>
+  <%= image_tag current_user.img.url %>
+<% else %>
+  <%= image_tag ("defalt.png") %>
+<% end %>
+
+<ul class="menu-item drop-menu">
+    
+<%= link_to current_user.name %>
+<ul class="drop-menu-list">
+<li class="drop-menu-item"><%= link_to '新規部屋作成', new_room_path %></li>
+<li class="drop-menu-item"><%= link_to '部屋作成一覧', rooms_path %></li>
+<li class="drop-menu-item"><%= link_to '予約一覧',reservations_path(@reservations) %></li>
+<li class="drop-menu-item"><%= link_to('アカウント', user_path(current_user)) %></li>
+<li class="drop-menu-item"><%= link_to('プロフィール', profile_path(current_user)) %></li>
+</ul>
+    
+</ul>
+</nav>
+<% end %>
+
+
+<%= yield %>
+</body>
 </html>

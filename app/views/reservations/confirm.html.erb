@@ -1,0 +1,44 @@
+<h1>Confirmation</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Room_id</th>
+      <th>Start_date</th>
+      <th>End_date</th>
+      <th>People</th>
+      <th>Total_date</th>
+      <th>Total_price</th>
+      <th>Room_name</th>
+     
+     
+
+      
+      
+    </tr>
+  </thead>
+
+<td><%= @reservation.room_id%></td>
+<td><%= @reservation.start_date%></td>
+<td><%= @reservation.end_date%></td>
+<td><%= @reservation.people%></td>
+<td><%= @reservation.total_date.to_i%></td>
+<td><%= @reservation.total_price.to_i%></td>
+<td><%= @reservation.room.room_name%></td>
+</table>
+
+
+<%= form_with model: @reservation,url: "/rooms/:room_id/reservation", method: :post, local: true do |f| %>
+  <%= f.hidden_field :room_id %>
+  <%= f.hidden_field :start_date %>
+  <%= f.hidden_field :end_date %>
+  <%= f.hidden_field :people %>
+  <%= f.hidden_field :total_date %>
+  <%= f.hidden_field :total_price %>
+  <%= f.hidden_field :room_name %>
+  <%= f.hidden_field :user_id %>
+  <%= f.submit "確定" %>
+  
+<% end %>
+
+<%= link_to 'Back', new_room_reservation_path %>

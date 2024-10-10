@@ -1,5 +1,5 @@
 <span>現在ログイン中のユーザー：<%= current_user.name %></span>
-   <%= form_with model: @profile do |f| %>
+   <%= form_with model: @profile ,url:profile_path  do |f| %>
        <div>
 
             <%= f.label :img %><br>
